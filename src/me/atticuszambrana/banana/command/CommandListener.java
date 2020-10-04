@@ -88,12 +88,12 @@ public class CommandListener implements MessageCreateListener {
 			// If not then literally do nothing
 		}
 		
-		if(!event.getMessageContent().startsWith(Core.bananaBot.getPrefix())) {
+		if(!event.getMessageContent().startsWith(Core.getBanana().getPrefix())) {
 			return;
 		}
 		
 		for(Map.Entry<String, Command> cmd : Commands.entrySet()) {
-			if(event.getMessageContent().startsWith(Core.bananaBot.getPrefix() + cmd.getKey())) {
+			if(event.getMessageContent().startsWith(Core.getBanana().getPrefix() + cmd.getKey())) {
 				cmd.getValue().execute(StringUtil.toArray(event.getMessageContent()), event);
 			}
 		}
