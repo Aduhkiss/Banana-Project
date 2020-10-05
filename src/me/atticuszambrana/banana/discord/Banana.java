@@ -6,6 +6,7 @@ import org.javacord.api.DiscordApiBuilder;
 import me.atticuszambrana.banana.command.CommandListener;
 import me.atticuszambrana.banana.overwatch.Overwatch;
 import me.atticuszambrana.banana.overwatch.listen.MessageWatcher;
+import me.atticuszambrana.banana.overwatch.listen.UserWatcher;
 import me.atticuszambrana.banana.util.Console;
 
 public class Banana {
@@ -30,10 +31,13 @@ public class Banana {
 		Console.print("Overwatch", "Starting Overwatch System...");
 		Overwatch over = new Overwatch(api);
 		Console.print("Overwatch", "Registering Action Listeners...");
+		
 		MessageWatcher watcher = new MessageWatcher(over);
+		UserWatcher uWatch = new UserWatcher(over);
 		api.addMessageCreateListener(watcher);
 		api.addMessageDeleteListener(watcher);
 		api.addMessageEditListener(watcher);
+		api.addUserChangeNicknameListener(uWatch);
 		
 		Console.print("Banana Project", "Done. Thank you for using The Banana Project!");
 	}

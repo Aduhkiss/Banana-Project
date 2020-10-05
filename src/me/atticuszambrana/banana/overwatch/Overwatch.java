@@ -38,7 +38,7 @@ public class Overwatch {
 		}
 		for(int i = 1; i < 100; i++) {
 			String name = LocalDate.now().toString() + "-" + i;
-			File log = new File(directory.getAbsolutePath() + "\\" + name + ".log");
+			File log = new File(directory.getAbsolutePath() + "//" + name + ".log");
 			if(log.createNewFile()) {
 				EasyAccess.put(server, log);
 				return true;
